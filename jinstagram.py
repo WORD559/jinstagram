@@ -277,45 +277,45 @@ class Instagram(object):
         media = sorted(media,key=lambda x:int(x["date"]))
         return media[0]
 
-    def stalker_follow(self,username,verbose=True):
-        """Broken - left in for posterity"""
-                try:
-                    following = i.get_info(user["username"])["user"]["followed_by_viewer"]
-                    requested = i.get_info(user["username"])["user"]["requested_by_viewer"]
-                    break
-                except:
-                    if verbose:
-                        print "Failed to get information about "+user["username"]
-                    failcount += 1
-                    time.sleep(5)
-            if failcount == 3:
-                if verbose:
-                    print "Skipping user "+user["username"]
-                continue
-            if (not following) and (not requested) and (user["username"] != i.username):
-                while failcount < 3:
-                    try:
-                        r = i.follow(user["username"])
-                        break
-                    except:
-                        if verbose:
-                            print "Failed to send request to "+user["username"]
-                if failcount == 3:
-                    if verbose:
-                        print "Skipping user "+user["username"]
-                    continue
-                try:
-                    if r["result"] == "requested":
-                        if verbose:
-                            print "Sending follow request to "+user["username"]
-                    else:
-                        if verbose:
-                            print "Followed "+user["username"]
-                except Exception,e:
-                    print r
-                    print user["username"]
-                    sys.exit(str(e))
-            else:
-                if verbose:
-                    print "Already following/requested "+user["username"]
+##    def stalker_follow(self,username,verbose=True):
+##        """Broken - left in for posterity"""
+##                try:
+##                    following = i.get_info(user["username"])["user"]["followed_by_viewer"]
+##                    requested = i.get_info(user["username"])["user"]["requested_by_viewer"]
+##                    break
+##                except:
+##                    if verbose:
+##                        print "Failed to get information about "+user["username"]
+##                    failcount += 1
+##                    time.sleep(5)
+##            if failcount == 3:
+##                if verbose:
+##                    print "Skipping user "+user["username"]
+##                continue
+##            if (not following) and (not requested) and (user["username"] != i.username):
+##                while failcount < 3:
+##                    try:
+##                        r = i.follow(user["username"])
+##                        break
+##                    except:
+##                        if verbose:
+##                            print "Failed to send request to "+user["username"]
+##                if failcount == 3:
+##                    if verbose:
+##                        print "Skipping user "+user["username"]
+##                    continue
+##                try:
+##                    if r["result"] == "requested":
+##                        if verbose:
+##                            print "Sending follow request to "+user["username"]
+##                    else:
+##                        if verbose:
+##                            print "Followed "+user["username"]
+##                except Exception,e:
+##                    print r
+##                    print user["username"]
+##                    sys.exit(str(e))
+##            else:
+##                if verbose:
+##                    print "Already following/requested "+user["username"]
 
